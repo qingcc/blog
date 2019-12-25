@@ -2,13 +2,15 @@
 
 
 
+  
 
-<html class="theme-next pisces" lang="en">
+
+<html class="theme-next pisces use-motion" lang="en">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="">
+<meta name="theme-color" content="#222">
 
 
 
@@ -36,16 +38,9 @@
 
 
 
-
-
-
-
-
-
-<link href="/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="//main.css?v=" rel="stylesheet" type="text/css" />
-
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -53,6 +48,27 @@
 
 
 
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -80,26 +96,28 @@
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    version: '',
-    sidebar: "",
-    fancybox: ,
-    tabs: ,
-    motion: "",
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
-      userId: 'undefined',
+      userId: '0',
       author: 'Author'
     },
     algolia: {
       applicationID: '',
       apiKey: '',
       indexName: '',
-      hits: "",
-      labels: ""
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
   };
 </script>
 
 
+
+  <link rel="canonical" href="http://yoursite.com/"/>
 
 
 
@@ -121,8 +139,10 @@
 
   
   
+    
+  
 
-  <div class="container  
+  <div class="container sidebar-position-left 
   page-home">
     <div class="headband"></div>
 
@@ -155,6 +175,72 @@
 <nav class="site-nav">
   
 
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            Sitemap
+          </a>
+        </li>
+      
+
+      
+    </ul>
   
 
   
@@ -190,7 +276,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Qing">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -209,6 +295,16 @@
 
         <div class="post-meta">
           <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-25T19:12:57+08:00">
+                2019-12-25
+              </time>
             
 
             
@@ -245,169 +341,21 @@
 
       
         
-          
-            <p>#对接供应商<br>每个供应商需要实现SplHotelServiceStage接口（包含6个方法）以及1个获取酒店静态数据的接口</p>
+          <p>#对接供应商<br>每个供应商需要实现SplHotelServiceStage接口（包含6个方法）以及1个获取酒店静态数据的接口</p>
 <ul>
-<li><p>GetInventoryRate(invRateReq InvRateRequest) SplServiceResult</p>
-</li>
-<li><p>CheckRoomAvail(roomAvailReq RoomAvailRequest) SplServiceResult</p>
-</li>
-<li><p>CreateOrder(orderRequest OrderRequest) SplServiceResult</p>
-</li>
-<li><p>CancelOrder(rq SplCancelOrderRequest) SplServiceResult</p>
-</li>
-<li><p>CheckCancelOrder(order SplCancelOrderRequest) SplServiceResult （暂不使用）</p>
-</li>
-<li><p>QueryOrder(orderQuery OrderQuery) SplServiceResult</p>
-</li>
-<li><p>文件结构：spls/suppliers/xxxx 供应商名称</p>
-</li>
-<li><p>|-model 定义结构体（接口文档中请求参数结构体，返回数据结构体）<br>|-service 服务</p>
-<pre><code>|-parser 对供应商接口返回的数据进行处理填充到SplServiceResult
-|-xxxxService 实现SplHotelServiceStage接口的所有方法</code></pre><p>|-staticData 获取该供应商的酒店静态数据<br>|-tools   </p>
-<pre><code>|-test 测试接口
-|-sendUtil 请求供应商接口的公共方法</code></pre></li>
-</ul>
-<p>开发之前（进行中）需要预先确定的：</p>
-<ul>
-<li>添加好配置（核心包等）前后端添加新供应商</li>
-<li>建好表（spl_rate_00 , spl_roomtype_00 , spl_rateplan_00 , spl_roomtype_mapping_00）</li>
-<li>服务器ip是否添加白名单（如果需要）</li>
-<li>确认好货币单位（是CNY还是其他，元还是分）</li>
-</ul>
-<p>目的：传入指定的数据（结构体），获取规范的返回数据（结构体）。</p>
-<p>供应商的所有接口的实现方式都一样：以取消订单接口为例</p>
-<ul>
-<li>第一步：通过接口的传入数据（结构体）， 筛取所需数据填充到供应商接口需要的结构体中（NewRequest()）。</li>
-<li>第二步：调用该供应商接口的公共方法（tools.SendDaieiData()）。</li>
-<li>第三步：处理供应商接口返回的标准http返回（checkError()）。</li>
-<li>第四步：对供应商接口返回的数据处理(parse.ParseCancelOrder())。</li>
-</ul>
-<p>//取消单接口， 传入数据cancelOrderRq，返回数据result：</p>
-<pre><code>func (s *DaieiService) CancelOrder(cancelOrderRq commobj.SplCancelOrderRequest) (result commobj.SplServiceResult) {
-    req := cancelOrder.NewRequest(cancelOrderRq)//返回供应商接口的请求参数
-    url := common.NewRequest(common.CANCEL_ORDER_URL, req)
-    res := new(cancelOrder.CancelOrderResponse) //声明接口返回数据变量，传入该变量的指针到公共方法。
-    httpMessageResult := tools.SendDaieiData(url, res, false)
-    //日志，将请求和响应写入日志
-    result.SplMessageLogs = append(result.SplMessageLogs, httpMessageResult)
-    if success := checkError(httpMessageResult, res.CommonResponse, &amp;result); !success {
-        return
-    }
-    parser.ParseCancelOrder(*res, &amp;result)
-    if !result.IsSuccess {
-        result.OrderDetail = domain.OrderDetail{SupplierOrderNum: cancelOrderRq.SupplierOrderNum}
-    }
-    return
-}</code></pre><p>标准请求方法tools.SendDaieiData(url, res, false)，供应商的所有接口都通过该方法请求并将返回值填充到res变量。</p>
-<ul>
-<li>第一个参数传入供应商接口请求结构体（该方法中是将请求参数拼接到url中传入，所以直接生成完整的url字符串并传入）</li>
-<li>第二个参数传入供应商接口返回的结构体指针（传入的是指针，会在该方法中，将返回的数据填充到该指针）</li>
-<li>第三个参数是否打印传入的请求和返回</li>
-</ul>
-<p>处理供应商接口返回的数据parser.ParseCancelOrder(*res, &amp;result)<br>传入供应商响应数据res，和规范的返回数据result的地址，会在该方法中根据res筛选数据填充到result中。</p>
-<p>酒店静态数据：</p>
-<pre><code>h := domain.Hotel{}
-h.SupplierId = domain.SPL_DAIEI_ID          //供应商id
-h.HotelCode = strconv.Itoa(hotel.HotelID)   //酒店code
-h.HotelName = hotel.HotelEN                 //酒店英文名
-h.HotelNameCN = hotel.HotelCN               //酒店中文名
-h.SplCountryCode = country.CountryCode      //供应商国家code 一般情况下填充SplCountryCode而不填充CountryCode(SplCountryCode为2位字母）
-h.CityCode = strconv.Itoa(city.CityID)      //城市code
-h.Longitude = strconv.FormatFloat(hotel.Longitude, &apos;f&apos;, -1, 64) //经度
-h.Latitude = strconv.FormatFloat(hotel.Latitude, &apos;f&apos;, -1, 64)   //纬度
-h.StarRating, _ = strconv.Atoi(hotel.StarLevel)    //星级
-h.Status = domain.ACTIVE                           //状态 默认 domain.ACTIVE
-
-h.SHotelId 不要赋值, 该字段是匹配酒店后填充的</code></pre><p>抓取报价接口返回值处理：(参照common.md)<br>若静态数据中无房型数据，则需要填充房型HotelSearchItem.RoomTypeList domain.RoomTypeList，若有，则不填充</p>
-<pre><code>commobj.SplServiceResult.HotelSearchItem{
-    SessionContent  (非必填)
-    RTRPRList  []RoomTypeRatePlanRate 报价数据
-        RoomTypeRatePlanRate{
-            Status              //状态
-            StandardOccupancy
-            Occupancy
-            MaxOccupancy        //最大入住人数
-            Currency {
-                Code
-            }
-            TotalPrice          //总价
-            TotalNetRate        
-            []Rates{                //单间夜价格库存
-                StayDate            //价格库存信息所属的日期
-                NetRate             //单间夜的价格, **_以分为单位_**
-                Status              //默认从供应商API返回的单天价格状态为domain
-                InvCount            //该日期剩余库存, 可以默认填4等，若为0，则status会被设置为3，现在只卖即时房型（可通过程序直接下单，不需要人工操作）
-            }
-            []CancellationPolicies{ //取消策略
-                AdvancedHour        //距离入住时间多少小时
-                ChargeType          //扣费类型 0(default): amount, 1: percentage, 2: nights, 3: first night, 4:扣全款
-                CurrencyCode        //扣费货币
-                ChargeAmount        //取消时扣除的费用
-            }
-            RoomTypeCode            //报价对应的房型代码（在该供应商下，必须唯一）
-            RatePlanCode            //报价的标识代码
-            SupplierId              //供应商id
-            RateCode                //通常用于存储报价额外信息的标识码
-            RatePlanName            //报价名称
-            PriceModelType          //报价售卖模式
-            MealType                //早餐类型（根据MealCount为不同的值）
-            MealDesc                //早餐 的描述
-            MealCount               //通过MealType字段计算得出
-            HotelCode               //报价所属的供应商酒店代码
-
-        }
-}</code></pre><p>创建订单：</p>
-<pre><code>commobj.SplServiceResult{
-    IsSuccess   bool    //是否成功
-    OrderDetail domain.OrderDetail{
-        SupplierOrderNum            //供应商订单号, 用于查询或取消订单   
-        OrderStatusSupplier         //供应商订单状态
-        SupplierId                  //供应商id
-        SupplierCurrency            //供应商订单货币三字码, 如USD, CNY等
-        SupplierPrice               //供应商订单成本, **_以分为单位_** （必填项，若不填，则下单记录中没有成本价字段）
-    }
-    Orders      []domain.OrderDetail           //把上面的OrderDetail追加到Orders
-}    </code></pre><p>查询订单：</p>
-<pre><code>commobj.SplServiceResult{
-    IsSuccess   bool    //是否成功
-    OrderDetail domain.OrderDetail{
-        SupplierOrderNum            //供应商订单号, 用于查询或取消订单   
-        OrderStatusSupplier         //供应商订单状态
-        SupplierId                  //供应商id
-        SupplierCurrency            //供应商订单货币三字码, 如USD, CNY等
-        SupplierPrice               //供应商订单成本, **_以分为单位_**
-        SplHotelCode                //酒店id
-        CityName                    //城市名称
-        HotelName                   //酒店名称
-        CheckIn                     //入住时间
-        CheckOut                    //离店时间
-        RoomCount                   //预定房间数
-    }
-    Orders      []domain.OrderDetail           //把上面的OrderDetail追加到Orders
-}    </code></pre><p>取消订单：</p>
-<pre><code> commobj.SplServiceResult{
-    IsSuccess   bool    //是否成功
-    OrderDetail domain.OrderDetail{
-        SupplierOrderNum            //供应商订单号, 用于查询或取消订单   
-        OrderStatusSupplier         //供应商订单状态
-    }
-    Orders      []domain.OrderDetail           //把上面的OrderDetail追加到Orders
-}    </code></pre><p>#需要注意的地方</p>
-<ul>
-<li>抓取静态数据的时候，h.SHotelId 不要赋值, 该字段是匹配酒店后自动填充的</li>
-<li>如果抓取报价接口关于房型的RoomTypeCode有使用func (rt *RoomType) Init()方法，需要存入的是调用该方法之后的roomType.RoomTypeCode,该方法是接受参数生成RoomTypeCode并填充到该结构体</li>
-<li>测试前需要将服务器ip添加到供应商白名单，否则所有接口都不能正常访问</li>
-<li>表是否都建好了（spl_rate_00 , spl_roomtype_00 , spl_rateplan_00 , spl_roomtype_mapping_00）</li>
-<li>供应商是否添加（前端和后端，前端代码中需要添加，后端数据表中需要添加）</li>
-<li>测试时，先匹配酒店（生成标准酒店id），再抓取报价（spl_rate_00需要有数据），之后才是房型匹配。此时，应该能在tourmind上面搜索到报价</li>
-<li>抓取到报价，在tourmind上有显示但点击进入时提示房间已售完（验价失败），需要修改验价接口。添加新供应商时，需要修改配置（可能是其他的包，在确定开发时，需要马上添加，以免耽误之后测试），另需要开放权限（售卖）</li>
-<li>请求接口的请求头中是否设置错误（如解析json数据，但传递的是xml等）</li>
-<li>字段RatePlanCode等的长度是否超出</li>
-<li>b2b上预定多间房时，填入的所有信息都会填充到orderRequest.RoomOccupancyList[0]中，每家供应商的规则可能不同，此处需要根据预定房间数量将入住人信息拆分</li>
-</ul>
-
-          
+<li>GetInventoryRate(invRateReq InvRateRequest) SplServiceResult</li>
+<li>CheckRoomAvail(roomAvailReq RoomAvailRequest) SplServiceResult</li>
+<li>CreateOrder(orderRequest OrderRequest) SplServiceResult</li>
+<li>CancelOrder(rq SplCancelOrderRequest) SplServiceResult</li>
+<li>CheckCancelOrder(order SplCancelOrderRequest) SplServiceResult （暂不使用）</li>
+<li>QueryOrder(orderQuery OrderQuery) SplServiceResult
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/12/25/index/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -459,7 +407,7 @@ h.SHotelId 不要赋值, 该字段是匹配酒店后填充的</code></pre><p>抓
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Qing">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -478,6 +426,16 @@ h.SHotelId 不要赋值, 该字段是匹配酒店后填充的</code></pre><p>抓
 
         <div class="post-meta">
           <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-24T20:30:56+08:00">
+                2019-12-24
+              </time>
             
 
             
@@ -568,7 +526,7 @@ h.SHotelId 不要赋值, 该字段是匹配酒店后填充的</code></pre><p>抓
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Qing">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -587,6 +545,16 @@ h.SHotelId 不要赋值, 该字段是匹配酒店后填充的</code></pre><p>抓
 
         <div class="post-meta">
           <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-24T20:23:22+08:00">
+                2019-12-24
+              </time>
             
 
             
@@ -623,22 +591,17 @@ h.SHotelId 不要赋值, 该字段是匹配酒店后填充的</code></pre><p>抓
 
       
         
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
 
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/12/24/hello-world/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -716,7 +679,7 @@ h.SHotelId 不要赋值, 该字段是匹配酒店后填充的</code></pre><p>抓
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives">
+                <a href="/archives%7C%7C%20archive">
               
                   <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">posts</span>
@@ -730,10 +693,10 @@ h.SHotelId 不要赋值, 该字段是匹配酒店后填充的</code></pre><p>抓
               
               
               <div class="site-state-item site-state-tags">
-                
-                  <span class="site-state-item-count">1</span>
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">tags</span>
-                
+                </a>
               </div>
             
 
@@ -770,7 +733,7 @@ h.SHotelId 不要赋值, 该字段是匹配酒店后填充的</code></pre><p>抓
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
-    <i class="fa fa-"></i>
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Qing</span>
 
@@ -778,9 +741,15 @@ h.SHotelId 不要赋值, 该字段是匹配酒店后填充的</code></pre><p>抓
 </div>
 
 
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
 
 
 
@@ -824,6 +793,8 @@ h.SHotelId 不要赋值, 该字段是匹配酒店后填充的</code></pre><p>抓
 
 
 
+  
+
 
 
 
@@ -837,55 +808,60 @@ h.SHotelId 不要赋值, 该字段是匹配酒店后填充的</code></pre><p>抓
 
   
   
-    <script type="text/javascript" src="//jquery/index.js?v=2.1.3"></script>
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
   
 
   
   
-    <script type="text/javascript" src="//fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
   
 
   
   
-    <script type="text/javascript" src="//jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
   
 
   
   
-    <script type="text/javascript" src="//velocity/velocity.min.js?v=1.2.1"></script>
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
   
 
   
   
-    <script type="text/javascript" src="//velocity/velocity.ui.min.js?v=1.2.1"></script>
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
   
 
 
   
 
 
-  <script type="text/javascript" src="//src/utils.js?v="></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
 
-  <script type="text/javascript" src="//src/motion.js?v="></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="//src/affix.js?v="></script>
-
-  <script type="text/javascript" src="//src/schemes/pisces.js?v="></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
 
 
 
   
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
 
   
 
 
-  <script type="text/javascript" src="//src/bootstrap.js?v="></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
 
 
 
