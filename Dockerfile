@@ -10,7 +10,6 @@ RUN cd /blog & npm install
 
 EXPOSE 4000
 
-CMD ["hexo", "server"]
 
 
 
