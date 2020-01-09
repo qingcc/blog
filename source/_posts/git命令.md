@@ -1,7 +1,4 @@
 # git命令
-
-链接：https://www.linuxidc.com/Linux/2018-04/151805.htm
-
 ## Git篇
 
 安装 Git 之后，你要做的第一件事情就是去配置你的名字和邮箱，因为每一次提交都需要这些信息：
@@ -440,3 +437,5 @@ git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Crese
 
 配置文件放哪了？每个仓库的Git配置文件都放在.git/config文件中。
 而当前用户的Git配置文件放在用户主目录下的一个隐藏文件.gitconfig中。
+
+[参考文章](https://www.linuxidc.com/Linux/2018-04/151805.htm)

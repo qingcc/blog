@@ -1,5 +1,10 @@
+---
+title: docker容器常用命令
+date: 2019-12-25 19:52:20
+categories:
+- docker
+---
 # docker容器常用命令
-
 > 1. docker version   //显示docker版本信息
 > 
 > 2. docker info //显示docker系统信息, 包括镜像和容器数
