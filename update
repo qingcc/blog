@@ -1,0 +1,4 @@
+#/bin/bash
+git pull
+docker exec hexo_blog hexo g
+#docker exec hexo_blog hexo s
