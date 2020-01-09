@@ -8,3 +8,4 @@ categories:
 - [Tools, git]
 - [Tools, docker]
 - [Life]
+- [算法]
