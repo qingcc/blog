@@ -9,7 +9,7 @@ git checkout -- filename
 #所有文件/文件夹
 git checkout .
 ```
-
+<!--more-->
 2. 新增且未`git add`到暂存区，放弃修改
 ```
 #单个文件/文件夹

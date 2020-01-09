@@ -6,7 +6,7 @@
 --servicea.go //服务a的入口文件
 --build.sh //启动文件
 ```
-
+<!-- more -->
 Dockerfile
 ```
 Dockerfile

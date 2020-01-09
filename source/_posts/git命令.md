@@ -9,6 +9,7 @@
 git config --global user.name "bukas"
 git config --global user.email "bukas@gmail.com"
 ```
+<!-- more -->
 获取Git配置信息，执行以下命令：
 ```
 git config --list

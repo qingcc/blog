@@ -8,6 +8,7 @@ git yum remove git
 yum install -y curl-devel expat-devel gettext-devel openssl-devel zlib-devel
 yum install -y gcc perl-ExtUtils-MakeMaker 
 ```
+<!-- more -->
 yum时，可能会报下载包错误（需要换源）
 ```
 #备份
