@@ -5,12 +5,13 @@ services:
       context: .
       image: hexo_blog:tag
       restart: always
-
-  nginx:
-    image: nginx
-    container_name: nginx
-    restart: always
-
-network:
-  my-net:
-    driver: bridge
+      ports:
+        - "4000:4000"
+      container_name: hexo_blog
+      volumes:
+        - ~/.ssh:/root/.ssh
+        - /root/docker/hexo/source:/blog/source
+        - /root/docker/hexo/themes:/blog/themes
+        - /root/docker/hexo/scaffolds:/blog/scaffolds
+        - /root/docker/hexo/_config.yml:/blog/_config.yml
+      network: nginx_net
