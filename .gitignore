@@ -1,2 +1,3 @@
 themes/*
-!themes/_config.yml        
+!themes/_config.yml
+.idea

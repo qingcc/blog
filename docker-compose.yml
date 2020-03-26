@@ -1,2 +1,16 @@
-version: '3'
+version: 3
+services:
+  blog:
+    build:
+      context: .
+      image: hexo_blog:tag
+      restart: always
 
+  nginx:
+    image: nginx
+    container_name: nginx
+    restart: always
+
+network:
+  my-net:
+    driver: bridge
