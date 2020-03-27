@@ -1,17 +1,27 @@
-version: 3
+version: '3'
 services:
   blog:
     build:
       context: .
-      image: hexo_blog:tag
+
+      image: hexo_blog:latest
+
       restart: always
-      ports:
+
+      port:
         - "4000:4000"
+
       container_name: hexo_blog
+
       volumes:
         - ~/.ssh:/root/.ssh
         - /root/docker/hexo/source:/blog/source
         - /root/docker/hexo/themes:/blog/themes
         - /root/docker/hexo/scaffolds:/blog/scaffolds
         - /root/docker/hexo/_config.yml:/blog/_config.yml
+
       network: nginx_net
+
+networks:
+  nginx_net:
+    driver: bridge
