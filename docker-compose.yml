@@ -19,4 +19,4 @@ networks:
   docker_net:
     ipam:
       config:
-        - subnet: 172.25.0.0/16
+        - subnet: 172.49.0.0/16
