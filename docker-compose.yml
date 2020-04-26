@@ -1,7 +1,7 @@
 version: '3'
 services:
   blog:
-      image: docker.io/qingcc/hexo_blog:latest
+      image: qingcc/hexo_blog:latest
       restart: 'always'
       ports:
         - "4000:4000"
