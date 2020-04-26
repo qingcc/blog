@@ -1,7 +1,7 @@
 version: '3'
 services:
   blog:
-      image: hexo_blog:latest
+      image: docker.io/qingcc/hexo_blog:latest
       restart: 'always'
       ports:
         - "4000:4000"
@@ -13,8 +13,10 @@ services:
         - /root/docker/hexo/scaffolds:/blog/scaffolds
         - /root/docker/hexo/_config.yml:/blog/_config.yml
       networks:
-        - nginx_net
+        - docker_net
 
 networks:
-  nginx_net:
-    driver: bridge
+  docker_net:
+    ipam:
+      config:
+        - subnet: 172.25.0.0/16
