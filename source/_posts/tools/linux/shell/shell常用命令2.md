@@ -1,5 +1,6 @@
+```
 [原文链接](https://www.cnblogs.com/mingdeng3000/p/11655883.html)
-
+```
 [TOC]
 
 shell命令大全笔记
