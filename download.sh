@@ -10,4 +10,4 @@ while (( $# > 1 )); do case $1 in
 done
 
 #bash /root/docker/hexo/.hexo.sh
-cd /root/docker/hexo && docker-compose up -d && git clone $git next && docker exec $container_name cp next /blog/themes && docker exec $container_name hexo c && docker exec  $container_name g && docker exec  $container_name s
+cd /root/docker/hexo && git clone $git next && docker exec $container_name cp next /blog/themes && docker exec $container_name hexo c && docker exec  $container_name g && docker exec  $container_name s

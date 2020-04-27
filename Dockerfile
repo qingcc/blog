@@ -3,10 +3,11 @@ FROM alpine
 RUN apk add nodejs npm git && npm install -g hexo-cli
 
 #Prepare work dir
-RUN hexo init /blog
-WORKDIR /blog
+COPY next /blog/themes
 
-RUN cd /blog & npm install
+RUN hexo init /blog
+
+WORKDIR /blog
 
 EXPOSE 4000
 
