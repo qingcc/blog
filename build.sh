@@ -1,11 +1,14 @@
 #bin/bash
 image_name=hexo_blog
 
-git clone https://github.com/iissnan/hexo-theme-next next
+if [ ! -d "/root/docker/hexo/next"]; then
+  git clone https://github.com/iissnan/hexo-theme-next next
+fi
 
 echo "===> building container image"
 
-if [docker images | grep $image_name == $image_name]; then
+exist=`docker images | grep $image_name`
+if [ "${exist}" != "" ]; then
  docker rmi -f $image_name
 fi
 
