@@ -9,6 +9,8 @@ COPY next /blog/themes
 
 WORKDIR /blog
 
+RUN cd /blog & npm install
+
 EXPOSE 4000
 
 
