@@ -3,13 +3,13 @@ services:
   blog:
       image: qingcc/hexo_blog:latest
       #restart: 'always'
-      ports:
-        - "4000:4000"
+      #ports:
+       # - "4000:4000"
       container_name: 'hexo_blog'
       volumes:
         - ~/.ssh:/root/.ssh
         - /root/docker/hexo/source:/blog/source
-        - /root/docker/hexo/themes:/blog/themes
+        - /root/docker/hexo/themes/next/_config:/blog/themes/next/_config
         - /root/docker/hexo/scaffolds:/blog/scaffolds
         - /root/docker/hexo/_config.yml:/blog/_config.yml
       networks:
