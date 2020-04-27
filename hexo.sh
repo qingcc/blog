@@ -14,4 +14,5 @@ while (( $# > 1 )); do case $1 in
 done
 
 #bash /root/docker/hexo/.hexo.sh
-cd /root/docker/hexo && docker-compose up -d && docker exec $container_name hexo clean && docker exec  $container_name generate && docker exec  $container_name server
+cd /root/docker/hexo && docker-compose up -d
+./update

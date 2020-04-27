@@ -13,7 +13,8 @@ services:
         - /root/docker/hexo/scaffolds:/blog/scaffolds
         - /root/docker/hexo/_config.yml:/blog/_config.yml
       networks:
-        - docker_net
+        docker_net:
+          ipv4_address: 172.33.0.10
 
 networks:
   docker_net:
