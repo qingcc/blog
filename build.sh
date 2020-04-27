@@ -1,7 +1,7 @@
 #bin/bash
 image_name=hexo_blog
 
-if [ ! -d "/root/docker/hexo/next/"]; then
+if [ ! -d "/root/docker/hexo/next/" ]; then
   git clone https://github.com/iissnan/hexo-theme-next next
 fi
 

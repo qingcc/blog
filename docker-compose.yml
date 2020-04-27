@@ -2,7 +2,7 @@ version: '3'
 services:
   blog:
       image: qingcc/hexo_blog:latest
-      restart: 'always'
+      #restart: 'always'
       ports:
         - "4000:4000"
       container_name: 'hexo_blog'
