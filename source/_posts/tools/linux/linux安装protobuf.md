@@ -7,8 +7,8 @@ yum -y install autoconf automake libtool curl make g++ unzip
 ```
 下载protobuf源码, 解压进入
 ```
-unzip protobuf-master.zip
-cd protobuf-master
+git clone https://github.com/google/protobuf.git
+cd protobuf
 ```
 生成configure文件的脚本文件，如果不执行这步，以下操作将通不过
 ```
@@ -57,4 +57,45 @@ go install github.com/golang/protobuf/protoc-gen-go/
 之后, 可以正常使用
 ```
 $ protoc --go_out=. hello.proto //生成go文件了
+```
+
+安装`protobuf` `go`版本脚本 `protobufInstall.sh`
+```
+#!/bin/bash
+yum -y install autoconf automake libtool curl make g++ unzip
+homePath=`echo ~`
+if [ ! -d "${homePath}/download/" ]; then
+    mkdir ~/download
+fi
+cd "${homePath}/download/"
+if [ ! -d "${homePath}/download/protof/" ]; then
+  git clone https://github.com/google/protobuf.git
+fi
+cd ./protobuf
+./autogen.sh
+./configure
+make && make install
+hasError=`protoc --version| grep "error"`
+if [ "${hasError}" != "" ]; then
+  cat > /etc/ld.so.conf.d/libprotobuf.conf << EOF
+/usr/local/lib
+EOF
+sudo ldconfig
+fi
+hasError=`protoc --version| grep "error"`
+if [ "${hasError}" == "" ]; then
+  go get github.com/golang/protobuf
+  go install github.com/golang/protobuf/protoc-gen-go/
+  cp "${GOPATH}/bin/protoc-gen-go" /usr/bin/
+  protoc --go_out=. hello.proto
+else
+  echo "has wrong"
+fi
+```
+
+等待执行（需要一定的时间）  
+最后打印如下，没有找到`hello.proto`文件.
+
+```
+Could not make proto path relative: hello.proto: No such file or directory
 ```
