@@ -42,7 +42,7 @@ golang使用goroutine做为最小的执行单位，但是这个执行单位还�
 
 这种模型直接调用操作系统的内核线程，所有线程的创建、终止、切换、同步等操作，都由内核来完成。C++就是这种。
 
-<font color="red">两级线程模型</font>
+- M:N 用户线程和内核线程是多对多的对应关系(<font color="red">两级线程模型</font>)
 
 ![Image](https://i6448038.github.io/img/csp/liangji.png)
 
@@ -51,8 +51,6 @@ golang使用goroutine做为最小的执行单位，但是这个执行单位还�
 `golang` 通过为`goroutine`提供语言层面的调度器，来实现了高效率的`M:N`线程对应关系
 
 `Go`语言的线程模型就是一种特殊的两级线程模型。暂且叫它“`MPG`”模型吧。
-        
-&emsp;&emsp;最近抽空研究、整理了一下Golang调度机制，学习了其他大牛的文章。把自己的理解写下来。如有错误，请指正！！！
         
 &emsp;&emsp;`golang` 的 `goroutine` 机制有点像线程池：
 
