@@ -12,4 +12,9 @@
 > [gitbook](https://legacy.gitbook.com/@yeasy)
 > 
 > [http优化 比较有趣](https://www.cnblogs.com/thinkeridea/p/10324806.html)
+>
+> [红黑树](https://blog.csdn.net/eson_15/article/details/51144079)
+>
+>[二叉查找树](https://www.cnblogs.com/gaochundong/p/binary_search_tree.html)
+
 
