@@ -3,7 +3,8 @@
 [TOC]
 
 ## 简介
-`Golang` 内置 `cpu` 、`mem` 、`block` 三种 `profiler` 采样工具，允许程序在运行时使用 `profiler` 进行数据采样，生成采样文件。通过 `go tool pprof` 工具可以交互式分析采样文件，得到高可读性的输出信息，帮助开发者快速分析及定位各种性能问题，如 `CPU` 消耗、内存分配及阻塞分析。
+`Golang` 内置 `cpu` 、`mem` 、`block` 三种 `profiler` 采样工具，允许程序在运行时使用 `profiler` 进行数据采样，生成采样文件。通过 
+`go tool pprof` 工具可以交互式分析采样文件，得到高可读性的输出信息，帮助开发者快速分析及定位各种性能问题，如 `CPU` 消耗、内存分配及阻塞分析。
 
 ## 数据采样
 
@@ -139,3 +140,9 @@ go tool pprof --http=:8080 cpu.pprof
 点击菜单栏可以在：Top/Graph/Peek/Source 之间进行切换，甚至可以看到火焰图（Flame Graph）：
 
 ![Image](https://user-images.githubusercontent.com/7698088/68528787-48a14c80-0332-11ea-8e9f-1cf730a02083.png)
+
+
+
+补充阅读：
+https://segmentfault.com/a/1190000019825563
+https://cloud.tencent.com/developer/article/1596810

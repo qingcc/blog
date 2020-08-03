@@ -45,3 +45,19 @@ $ git commit --amend [file1] [file2] ...
 $ git cherry-pick [commit]
 
 ```
+
+### win下修改文件的权限并提交
+
+```
+#git 查看文件权限
+git ls-tree HEAD
+
+#git 修改文件权限
+git update-index --chmod=+x build.sh
+
+#修改之后git add & git commit之后，再次查看
+git ls-tree HEAD
+
+#会发现由100644变为100755，已经有执行查找权限了，推送
+git push
+```
