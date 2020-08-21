@@ -61,3 +61,11 @@ git ls-tree HEAD
 #会发现由100644变为100755，已经有执行查找权限了，推送
 git push
 ```
+
+## git merge 将另一分支上多条commit合并成1条merge到目标分支
+
+```
+git merge --squash branchname
+```
+
+注意：使用该命令的标准是， 待合并分支上的历史是否有意义
