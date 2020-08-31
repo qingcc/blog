@@ -9,8 +9,8 @@ docker  images|grep  none|awk  '{print  $3  }'|xargs  docker  rmi
 
 1. `df -h`查看磁盘占用情况
 2. 查看docker占用磁盘大小（最大可能是docker占用磁盘过大）
-3. 查看 `/var/lib/docker/containers/`下容器是否占用磁盘过大（容器的日志文件可能会很大，如果没有限制容器日志文件大小），使用`ls | du sh`命令查看各个容器占用磁盘的大小
-4. 使用`docker instect container`来查看占用磁盘较大的容器（主要查看对应的日志文件路径，并使用`du sh`命令来查看该日志文件的大小
+3. 查看 `/var/lib/docker/containers/`下容器是否占用磁盘过大（容器的日志文件可能会很大，如果没有限制容器日志文件大小），使用`ls | du -sh`命令查看各个容器占用磁盘的大小
+4. 使用`docker instect container`来查看占用磁盘较大的容器（主要查看对应的日志文件路径，并使用`du -sh`命令来查看该日志文件的大小
 
 1.2 在 `linux` 上容器日志一般存放在 `/var/lib/docker/containers/container_id/` 下面，以 `json.log` 结尾的文件(业务日志)很大：
 
