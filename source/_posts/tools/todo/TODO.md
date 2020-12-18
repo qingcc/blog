@@ -17,4 +17,9 @@
 >
 >[二叉查找树](https://www.cnblogs.com/gaochundong/p/binary_search_tree.html)
 
-
+>[](https://www.cnblogs.com/carpenterlee/p/5503882.html)
+>[](https://www.cnblogs.com/skywang12345/p/3245399.html#a34)
+>[](https://zhuanlan.zhihu.com/p/37470148)
+>[](https://www.cnblogs.com/nullzx/p/8729425.html)
+>[](https://zhuanlan.zhihu.com/p/59788528)
+>[](https://juejin.im/entry/5b0cb64e518825157476b4a9)
