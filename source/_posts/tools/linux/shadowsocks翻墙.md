@@ -1,19 +1,23 @@
 # 通过shadowsocks实现翻墙
 [TOC]
 ### 安装shadowwsocks
-```
+```shell script
 sudo apt install shadowsocks 
 vim gui-config.json
+# 若没有安装apt，可以使用yum安装
+yum install python36 -y
+python3.6  -m  pip install --upgrade pip
+pip install shadowsocks
 ```
 ### 然后配置这个json文件
 ```
 du@du:~/Demo/ss$ cat gui-config.json
 {
     "method": "aes-256-cfb",
-    "password": "",#服务器密码
+    "password": "Yi2009@QingTian",
     "remarks": "",
-    "server": "ip", #服务器IP
-    "server_port": 443,#服务器端口
+    "server": "149.28.237.150",
+    "server_port": 28222,
     "local_address":"127.0.0.1",
     "localPort": 1080,
     "shareOverLan": true
