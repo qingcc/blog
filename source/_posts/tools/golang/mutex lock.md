@@ -436,5 +436,5 @@ func (m *Mutex) Unlock() {
 [golang中的锁源码实现：Mutex](http://legendtkl.com/2016/10/23/golang-mutex/)  
 [Golang 并发编程与同步原语](https://www.infoq.cn/article/q40qmeoqxfpsdccgm0ba)  
 [golang sync.Mutex锁如何实现goroutine的阻塞与唤醒初探](https://blog.csdn.net/liyunlong41/article/details/104949898)  
-[信号量的结构](https://studygolang.com/articles/33190)
+[信号量的结构](https://studygolang.com/articles/33190)  
 [一份详细注释的go Mutex源码](https://zhuanlan.zhihu.com/p/75263302)

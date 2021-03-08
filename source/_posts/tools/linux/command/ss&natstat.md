@@ -1,11 +1,13 @@
 [TOC]
 
-[原文链接](https://www.cnblogs.com/peida/archive/2013/03/11/2953420.html)
+[原文链接](https://www.cnblogs.com/peida/archive/2013/03/11/2953420.html)  
+[参考文章](https://wangchujiang.com/linux-command/c/ss.html)  
+[参考文章](https://www.cnblogs.com/machangwei-8/p/10352986.html)
 
 ss是Socket Statistics的缩写。顾名思义，ss命令可以用来<font color="#dd0000">获取socket统计信息</font>，它可以显示和netstat类似的内容。但<font color="#dd0000">ss的优势在于它能够显示更多更详细的有关TCP和连接状态的信息</font>，而且比netstat更快速更高效。
 
-> 1) 当服务器的socket连接数量变得非常大时，无论是使用netstat命令还是直接cat /proc/net/tcp，执行速度都会很慢。特别是当服务器维持的连接达到上万个的时候，差别非常明显。  
-2）而ss快的秘诀在于它利用到了TCP协议栈中tcp_diag。tcp_diag是一个用于分析统计的模块，可以获得Linux内核中第一手的信息，这就确保了ss的快捷高效。当然，如果你的系统中没有tcp_diag，ss也可以正常运行，只是效率会变得稍慢（但仍然比 netstat要快）
+> 1. 当服务器的socket连接数量变得非常大时，无论是使用netstat命令还是直接cat /proc/net/tcp，执行速度都会很慢。特别是当服务器维持的连接达到上万个的时候，差别非常明显。    
+> 2. 而ss快的秘诀在于它利用到了TCP协议栈中tcp_diag。tcp_diag是一个用于分析统计的模块，可以获得Linux内核中第一手的信息，这就确保了ss的快捷高效。当然，如果你的系统中没有tcp_diag，ss也可以正常运行，只是效率会变得稍慢（但仍然比 netstat要快）
 
 推荐直接使用 `ss` 代替 `netstat`
 
