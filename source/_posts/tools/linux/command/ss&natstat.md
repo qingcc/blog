@@ -39,8 +39,8 @@ ss(Socket Statistics的缩写)命令可以用来获取 socket统计信息，此�
 -h, --help 帮助信息  
 -V, --version 程序版本信息  
 -n, --numeric 不解析服务名称  
--r, --resolve        解析主机名  
--a, --all 显示所有套接字（sockets）  
+-r, --resolve        解析主机名(把 IP 解释为域名，把端口号解释为协议名称)  
+-a, --all 显示所有套接字（sockets）,对 TCP 协议来说，既包含监听的端口，也包含建立的连接  
 -l, --listening 显示监听状态的套接字（sockets）  
 -o, --options        显示计时器信息  
 -e, --extended       显示详细的套接字（sockets）信息  
@@ -70,5 +70,140 @@ ss(Socket Statistics的缩写)命令可以用来获取 socket统计信息，此�
 命令：
 
 ```
-ss -t -a
+ss -t -a    # 显示TCP连接
+ss -s       # 显示 Sockets 摘要
+ss -l       # 列出所有打开的网络连接端口
+ss -pl      # 查看进程使用的socket
+ss -lp | grep 3306  # 找出打开套接字/端口应用程序
+ss -u -a    显示所有UDP Sockets
+ss -o state established '( dport = :smtp or sport = :smtp )' # 显示所有状态为established的SMTP连接
+ss -o state established '( dport = :http or sport = :http )' # 显示所有状态为Established的HTTP连接
+ss -o state fin-wait-1 '( sport = :http or sport = :https )' dst 193.233.7/24  # 列举出处于 FIN-WAIT-1状态的源端口为 80或者 443，目标网络为 193.233.7/24所有 tcp套接字
+
+# ss 和 netstat 效率对比
+time netstat -at
+time ss
+
+# 匹配远程地址和端口号
+# ss dst ADDRESS_PATTERN
+ss dst 192.168.1.5
+ss dst 192.168.119.113:http
+ss dst 192.168.119.113:smtp
+ss dst 192.168.119.113:443
+
+# 匹配本地地址和端口号
+# ss src ADDRESS_PATTERN
+ss src 192.168.119.103
+ss src 192.168.119.103:http
+ss src 192.168.119.103:80
+ss src 192.168.119.103:smtp
+ss src 192.168.119.103:25
+```
+
+## 用TCP 状态过滤Sockets
+```shell script
+ss -4 state closing
+# ss -4 state FILTER-NAME-HERE
+# ss -6 state FILTER-NAME-HERE
+# FILTER-NAME-HERE 可以代表以下任何一个：
+# established、 syn-sent、 syn-recv、 fin-wait-1、 fin-wait-2、 time-wait、 closed、 close-wait、 last-ack、 listen、 closing、
+# all : 所有以上状态
+# connected : 除了listen and closed的所有状态
+# synchronized :所有已连接的状态除了syn-sent
+# bucket : 显示状态为maintained as minisockets,如：time-wait和syn-recv.
+# big : 和bucket相反.
+```
+
+## dst/src dport/sport 语法
+
+可以通过 `dst/src/dport/sprot` 语法来过滤连接的来源和目标，来源端口和目标端口。
+
+匹配远程地址和端口号
+```shell script
+ss dst 192.168.1.5
+ss dst 192.168.119.113:http
+ss dst 192.168.119.113:443
+```
+
+匹配本地地址和端口号
+```shell script
+ss src 192.168.119.103
+ss src 192.168.119.103:http
+ss src 192.168.119.103:80
+```
+
+将本地或者远程端口和一个数比较
+
+可以使用下面的语法做端口号的过滤：
+```shell script
+ss dport OP PORT
+ss sport OP PORT
+```
+OP 可以代表以下任意一个：  
+
+||||
+|:---|:---|:---|
+|<=	|le	|小于或等于某个端口号|
+|\>=|ge	|大于或等于某个端口号|
+|==	|eq	|等于某个端口号|
+|!=	|ne	|不等于某个端口号|
+|\> |gt	|大于某个端口号|
+|<	|lt	|小于某个端口号|
+ 
+ 下面是一个简单的 demo(注意，需要对尖括号使用转义符)：
+```shell script
+ss -tunl sport lt 50
+ss -tunl sport \< 50
+``` 
+
+## 通过 TCP 的状态进行过滤
+
+ss 命令还可以通过 TCP 连接的状态对进程过滤，支持的 TCP 协议中的状态有：
+> established  
+syn-sent  
+syn-recv  
+fin-wait-1  
+fin-wait-2  
+time-wait  
+closed  
+close-wait  
+last-ack  
+listening  
+closing  
+
+除了上面的 TCP 状态，还可以使用下面这些状态：
+
+|||
+|:---|:---|
+|all            |	列出所有的 TCP 状态。|
+|connected      |	列出除了 listening 和 closing 之外的所有 TCP 状态。|
+|synchronized   |	列出除了 syn-sent 之外的所有 TCP 状态。|
+|bucket         |	列出 maintained 的状态，如：time-wait 和 syn-recv。|
+|big            |	列出和 bucket 相反的状态。|
+
+使用 ipv4 时的过滤语法如下：
+```shell script
+ss -4 state filter
+```
+使用 ipv6 时的过滤语法如下：
+```shell script
+ss -6 state filter
+```
+下面是一个简单的例子：
+```shell script
+ss -4 state listening
+```
+
+## 同时过滤 TCP 的状态和端口号
+
+(注意下面命令中的转义符和空格，都是必须的。如果不用转义符，可以使用单引号)
+下面的两种写法是等价的，要有使用 \ 转义小括号，要么使用单引号括起来：
+```shell script
+ss -4n state listening \( dport = :ssh \)
+ss -4n state listening '( dport = :ssh )'
+```
+
+下面是一个来自 ss man page 的例子，它列举出处于 FIN-WAIT-1状态的源端口为 80 或者 443，目标网络为 193.233.7/24 所有 TCP 套接字：
+```shell script
+ss state fin-wait-1 '( sport = :http or sport = :https )' dst 193.233.7/24
 ```
