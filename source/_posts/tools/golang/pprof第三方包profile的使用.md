@@ -67,7 +67,7 @@ sudo apt-get install -y graphviz
 
 现在准备工作做好了，我们目前生成了 `cpu` 二进制可执行文件，`cpu_profile` 性能分析需要的 `cpu.pprof`，接下来我们要正式进入 `cpu.pprof` 进行分析了。
 
-`go tool pprof cpu cpu_pprof` 执行这个命令就进入了 `profile` 文件了，这时候我们已经可以开始分析代码了。输入 `help` ，可以查看都支持哪些操作，有很多命令可以根据需要进行选择，我们只介绍4个我自己比较喜欢用的命令 `web` ，`top`，`peek`，`list`。
+`go tool pprof cpu cpu.pprof` 执行这个命令就进入了 `profile` 文件了，这时候我们已经可以开始分析代码了。输入 `help` ，可以查看都支持哪些操作，有很多命令可以根据需要进行选择，我们只介绍4个我自己比较喜欢用的命令 `web` ，`top`，`peek`，`list`。
 
 `*web ------` 在交互模式下输入 `web` ，就能自动生成一个 `.svg` 文件，并跳转到浏览器打开，生成了一个函数调用图（需要安装`graphviz`），如下图：
 
@@ -102,11 +102,11 @@ sudo apt-get install -y graphviz
 
 1）`list main.main`
 
-![](https://upload-images.jianshu.io/upload_images/13986876-0bdcc7465830eef6.png?imageMogr2/auto-orient/strip|imageView2/2/w/700/format/webp)
+![Image](https://upload-images.jianshu.io/upload_images/13986876-0bdcc7465830eef6.png?imageMogr2/auto-orient/strip|imageView2/2/w/700/format/webp)
 
 2)  `peek findMapMax` (因为根据1可以看出来消耗都在 `findMapMax`)
 
-[](https://upload-images.jianshu.io/upload_images/13986876-0f07c2eeddc5c0b7.png?imageMogr2/auto-orient/strip|imageView2/2/w/700/format/webp)
+![Image](https://upload-images.jianshu.io/upload_images/13986876-0f07c2eeddc5c0b7.png?imageMogr2/auto-orient/strip|imageView2/2/w/700/format/webp)
 
 
 3）list main.findMapMax (根据2可以看出来名字是 main.findMapMax)
