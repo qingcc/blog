@@ -8,8 +8,8 @@
 在计算机科学领域，反射是指一类应用，它们能够自描述和自控制。也就是说，这类应用通过采用某种机制来实现对自己行为的
 描述（self-representation）和监测（examination），并能根据自身行为的状态和结果，调整或修改应用所描述行为的状态和相关的语义。
 
-每种语言的反射模型都不同，并且有些语言根本不支持反射。Golang语言实现了反射，反射机制就是在运行时动态的调用对象的方法和属性，官方自带的`reflect`包就是反射相关的，
-只要包含这个包就可以使用。
+每种语言的反射模型都不同，并且有些语言根本不支持反射。Golang语言实现了反射，反射机制就是在运行时动态的调用对象的方法和属性，
+官方自带的`reflect`包就是反射相关的，只要包含这个包就可以使用。
 
 多插一句， `Golang` 的 `gRPC` 也是通过反射实现的。
 
@@ -19,12 +19,13 @@
 变量包括（`type`, `value`）两部分
 
 理解这一点就知道为什么`nil != nil`了
-`type` 包括 `static type`和`concrete type`. 简单来说 `static type`是你在编码时看见的类型(如`int`、`string`)，`concrete type`是`runtime`系统看见的类型
+`type` 包括 `static type`和`concrete type`. 简单来说 `static type`是你在编码时看见的类型(如`int`、`string`)，
+`concrete type`是`runtime`系统看见的类型
 
 类型断言能否成功，取决于变量的`concrete type`，而不是`static type`. 因此，一个 `reader`变量如果它的`concrete type`也实现了`write`方法的话，
 它也可以被类型断言为`writer`.
 
-接下来要讲的反射，就是建立在类型之上的，`Golang`的指定类型的变量的类型是静态的（也就是指定`int`、`string`这些的变量，它的`type`是`static type`），
+接下来要讲的反射，就是建立在类型之上的，`Golang`指定类型的变量的类型是静态的（也就是指定`int`、`string`这些的变量，它的`type`是`static type`），
 在创建变量的时候就已经确定，反射主要与`Golang`的`interface`类型相关（它的`type`是`concrete type`），只有`interface`类型才有反射一说。
 
 在`Golang`的实现中，每个`interface`变量都有一个对应`pair`，`pair`中记录了实际变量的值和类型:
@@ -50,8 +51,8 @@ w = r.(io.Writer)
 ```
 接口变量`w`的`pair`与`r`的`pair`相同，都是:(`tty`, `*os.File`)，即使`w`是空接口类型，`pair`也是不变的。
 
-`interface`及其`pair`的存在，是`Golang`中实现反射的前提，理解了`pair`，就更容易理解反射。反射就是用来检测存储在接口变量内部(值`value`；类型`concrete type`)
- `pair`对的一种机制。
+`interface`及其`pair`的存在，是`Golang`中实现反射的前提，理解了`pair`，就更容易理解反射。
+反射就是用来检测存储在接口变量内部(值`value`；类型`concrete type`) `pair`对的一种机制。
 
 ## `Golang`的反射`reflect`
 

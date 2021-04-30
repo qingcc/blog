@@ -5,3 +5,9 @@ if strings.TrimSpace(os.Getenv("name")) == "" {
     //todo something
 }
 ```
+
+# 逃逸分析
+
+```shell script
+go build -gcflags "-N -l -m" closure
+```
