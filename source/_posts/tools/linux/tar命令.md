@@ -47,11 +47,11 @@ tar -cvf /tmp/etc.tar /etc      # 仅打包，不压缩！
 tar -czvf /tmp/etc.tar.gz /etc  # 打包后，以 gzip 压缩
 tar -cjvf /tmp/etc.tar.bz2 /etc # 打包后，以 bzip2 压缩
 ```
-# 特别注意，在参数 f 之后的档案档名是自己取的，我们习惯上都用 .tar 来作为辨识。
-# 如果加 z 参数，则以 .tar.gz 或 .tgz 来代表 gzip 压缩过的 tar file ～
-# 如果加 j 参数，则以 .tar.bz2 来作为附档名啊～
-# 上述指令在执行的时候，会显示一个警告讯息：
-# 『tar: Removing leading `/' from member names 』那是关于绝对路径的特殊设定。
+> 特别注意，在参数 f 之后的档案档名是自己取的，我们习惯上都用 .tar 来作为辨识。  
+> 如果加 z 参数，则以 .tar.gz 或 .tgz 来代表 gzip 压缩过的 tar file ～  
+> 如果加 j 参数，则以 .tar.bz2 来作为附档名啊～  
+> 上述指令在执行的时候，会显示一个警告讯息：  
+> 『tar: Removing leading `/' from member names 』那是关于绝对路径的特殊设定。  
  
 ```
 
