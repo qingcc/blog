@@ -2,12 +2,12 @@
 # 测试容器间通信
 ## 创建网络
 
-```
+```shell
 docker network create --driver=bridge --subnet=172.25.0.0/16 my_nginx_net
 ```
 
 修改nginx的docker-compose.yml，使用新创建的网络
-```
+```yaml
 version: '3'
 services:
    proxy:
@@ -33,7 +33,7 @@ networks:
 ```
 使用该网络创建blog容器
 
-```
+```shell
 docker run -dit --net my_nginx_net --name hexo_blog --ip 172.25.0.13 \
     -v ~/.ssh:/root/.ssh \
     -v /root/docker/hexo/source:/blog/source \
@@ -44,7 +44,7 @@ qingcc/hexo_blog:latest
 ```
 修改my_nginx容器配置文件
 
-```
+```shell
 vim /data/nginx/conf.d/test.conf
 ```
 键入
@@ -87,7 +87,7 @@ server {
 ```
 开启my_nginx容器
 
-```
+```shell
 docker-compose up -d
 ```
 

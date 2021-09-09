@@ -8,7 +8,7 @@
 ## docker命令报permission denied错误的处理方法
 在安装docker时，已经创建了一个名为docker的用户组，守护进程启动的时候，会默认赋予用户组docker读写Unix socket的权限，因此只要将当前用户加入到docker用户组中，那当前用户就有权限访问Unix socket了，进而也就可以执行docker相关命令
 
-```
+```shell
 #将登陆用户加入到docker用户组中
 sudo gpasswd -a $USER docker
 
